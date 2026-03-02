@@ -5,15 +5,15 @@
 
 /* --- Design Tokens ------------------------------------------------------- */
 :root {
-    --bg: #090909;
-    --bg-2: #111111;
-    --bg-card: #161616;
+    --bg: #1c1c1e;
+    --bg-2: #25262b;
+    --bg-card: #2c2e33;
     --fg: #f0ebe3;
-    --fg-muted: #686868;
-    --fg-subtle: #2e2e2e;
+    --fg-muted: #a6a7ab;
+    --fg-subtle: #5c5f66;
     --accent: #c9a96e;
-    --border: #1e1e1e;
-    --border-mid: #282828;
+    --border: #373a40;
+    --border-mid: #414550;
 }
 
 /* --- Reset --------------------------------------------------------------- */
@@ -73,7 +73,7 @@ a {
     align-items: center;
     justify-content: space-between;
     padding: 22px 48px;
-    background: rgba(9, 9, 9, 0.82);
+    background: rgba(28, 28, 30, 0.82);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -138,6 +138,9 @@ a {
 }
 
 .hero-content {
+    display: flex;
+    align-items: center;
+    gap: 64px;
     max-width: 900px;
     width: 100%;
     margin: 0 auto;
@@ -925,3 +928,23 @@ a {
         padding: 28px 0;
     }
 }
+
+.hero-avatar {
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 24px;
+    border: 2px solid var(--border-mid);
+}
+
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 24px !important;
+    }
+}
+

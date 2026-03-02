@@ -1,0 +1,8 @@
+# Logseq
+logseq/bak/
+
+# ClojureScript / shadow-cljs
+node_modules/
+.shadow-cljs/
+npm-debug.log*
+cljs-runtime

@@ -1,0 +1,723 @@
+/* =============================================================================
+   GitHub Dark — Journal Blog
+   Unified stylesheet for index, post, and CV views.
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   Design tokens — GitHub Dark palette
+   --------------------------------------------------------------------------- */
+:root {
+    /* Canvas */
+    --gh-canvas-default: #0d1117;
+    --gh-canvas-subtle: #161b22;
+    --gh-canvas-inset: #010409;
+    --gh-canvas-overlay: #1c2128;
+
+    /* Borders */
+    --gh-border-default: #30363d;
+    --gh-border-muted: #21262d;
+
+    /* Foreground */
+    --gh-fg-default: #e6edf3;
+    --gh-fg-muted: #8b949e;
+    --gh-fg-subtle: #6e7681;
+    --gh-fg-on-emphasis: #ffffff;
+
+    /* Accent (blue) */
+    --gh-accent-fg: #58a6ff;
+    --gh-accent-emphasis: #1f6feb;
+    --gh-accent-muted: rgba(56, 139, 253, 0.15);
+
+    /* Success (green) */
+    --gh-success-fg: #3fb950;
+    --gh-success-emphasis: #238636;
+    --gh-success-muted: rgba(46, 160, 67, 0.15);
+
+    /* Attention (yellow) */
+    --gh-attention-fg: #d29922;
+    --gh-attention-subtle: rgba(187, 128, 9, 0.15);
+
+    /* Severe (orange) */
+    --gh-severe-fg: #db6d28;
+
+    /* Danger (red) */
+    --gh-danger-fg: #f85149;
+
+    /* Done (purple) */
+    --gh-done-fg: #a371f7;
+    --gh-done-subtle: rgba(163, 113, 247, 0.15);
+
+    /* Sponsors (pink) */
+    --gh-sponsors-fg: #db61a2;
+}
+
+/* ---------------------------------------------------------------------------
+   Reset & base
+   --------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+        Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--gh-fg-default);
+    background-color: var(--gh-canvas-default);
+    min-height: 100vh;
+    padding: 24px 16px;
+}
+
+a {
+    color: var(--gh-accent-fg);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--gh-accent-fg);
+}
+
+/* ---------------------------------------------------------------------------
+   Layout
+   --------------------------------------------------------------------------- */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Navigation (post / CV pages)
+   --------------------------------------------------------------------------- */
+nav {
+    padding: 16px 0;
+    margin-bottom: 16px;
+}
+
+nav a {
+    color: var(--gh-accent-fg);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.15s;
+}
+
+nav a::before {
+    content: "\2190  ";
+}
+
+nav a:hover {
+    color: var(--gh-fg-default);
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------------
+   Page header (shared)
+   --------------------------------------------------------------------------- */
+header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--gh-border-default);
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gh-fg-default);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+header p {
+    font-size: 0.9375rem;
+    color: var(--gh-fg-muted);
+}
+
+/* Post / CV page — tighter header when preceded by nav */
+.container > nav + header {
+    padding: 24px 0 24px;
+}
+
+.container > nav + header h1 {
+    font-size: 1.625rem;
+    margin-bottom: 6px;
+}
+
+.container > nav + header .date {
+    font-size: 0.875rem;
+    color: var(--gh-fg-muted);
+}
+
+/* ---------------------------------------------------------------------------
+   Header nav link (index page "CV →")
+   --------------------------------------------------------------------------- */
+.header-nav {
+    margin-top: 16px;
+}
+
+.header-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--gh-success-fg);
+    border: 1px solid var(--gh-border-default);
+    border-radius: 6px;
+    padding: 4px 12px;
+    transition:
+        background-color 0.15s,
+        border-color 0.15s,
+        color 0.15s;
+}
+
+.header-nav a::before {
+    content: none;
+}
+
+.header-nav a:hover {
+    background-color: var(--gh-success-muted);
+    border-color: var(--gh-success-fg);
+    color: var(--gh-success-fg);
+    text-decoration: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Post card list (index page)
+   --------------------------------------------------------------------------- */
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.post-card {
+    background-color: var(--gh-canvas-subtle);
+    border: 1px solid var(--gh-border-default);
+    border-radius: 6px;
+    padding: 24px;
+    text-decoration: none;
+    display: block;
+    transition:
+        border-color 0.15s,
+        background-color 0.15s;
+    cursor: pointer;
+}
+
+.post-card:hover {
+    border-color: var(--gh-accent-fg);
+    background-color: var(--gh-canvas-overlay);
+    text-decoration: none;
+}
+
+.post-card h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gh-accent-fg);
+    margin-bottom: 6px;
+    transition: color 0.15s;
+}
+
+.post-card:hover h2 {
+    text-decoration: underline;
+}
+
+.post-date {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--gh-fg-muted);
+    margin-bottom: 12px;
+}
+
+.post-excerpt {
+    font-size: 0.875rem;
+    color: var(--gh-fg-muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.read-more {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--gh-success-fg);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.read-more::after {
+    content: "\2192";
+    transition: transform 0.15s;
+}
+
+.post-card:hover .read-more::after {
+    transform: translateX(3px);
+}
+
+/* ---------------------------------------------------------------------------
+   Blog post article (post page)
+   --------------------------------------------------------------------------- */
+.blog-post {
+    background-color: var(--gh-canvas-subtle);
+    border: 1px solid var(--gh-border-default);
+    border-radius: 6px;
+    padding: 32px;
+    margin-bottom: 32px;
+}
+
+.blog-post h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gh-accent-fg);
+    margin-top: 32px;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--gh-border-muted);
+}
+
+.blog-post h2:first-of-type {
+    margin-top: 0;
+}
+
+.blog-post h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gh-success-fg);
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.blog-post p {
+    font-size: 0.9375rem;
+    color: var(--gh-fg-default);
+    margin-bottom: 16px;
+    line-height: 1.75;
+}
+
+.blog-post ul,
+.blog-post ol {
+    margin: 8px 0 16px 24px;
+    color: var(--gh-fg-muted);
+}
+
+.blog-post li {
+    font-size: 0.9375rem;
+    margin-bottom: 6px;
+    padding-left: 4px;
+    line-height: 1.7;
+}
+
+.blog-post li::marker {
+    color: var(--gh-fg-subtle);
+}
+
+.blog-post code {
+    font-family:
+        ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+        "Liberation Mono", monospace;
+    font-size: 0.8125rem;
+    background-color: var(--gh-canvas-inset);
+    color: var(--gh-severe-fg);
+    border: 1px solid var(--gh-border-muted);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+.blog-post strong {
+    color: var(--gh-fg-default);
+    font-weight: 600;
+}
+
+.blog-post em {
+    color: var(--gh-done-fg);
+    font-style: italic;
+}
+
+.blog-post a {
+    color: var(--gh-accent-fg);
+    text-decoration: none;
+}
+
+.blog-post a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------------
+   Special content boxes
+   --------------------------------------------------------------------------- */
+.highlight-box {
+    background-color: var(--gh-attention-subtle);
+    border: 1px solid var(--gh-attention-fg);
+    border-left-width: 4px;
+    padding: 12px 16px;
+    margin: 20px 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.highlight-box p {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: var(--gh-fg-default);
+}
+
+.dream-box {
+    background-color: var(--gh-done-subtle);
+    border: 1px solid var(--gh-done-fg);
+    border-left-width: 4px;
+    padding: 12px 16px;
+    margin: 20px 0;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: var(--gh-fg-muted);
+}
+
+.dream-box::before {
+    content: "\1F4AD  ";
+    font-style: normal;
+}
+
+.dream-box p {
+    margin: 0;
+    font-size: 0.9375rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Empty state
+   --------------------------------------------------------------------------- */
+.empty-state {
+    text-align: center;
+    padding: 64px 20px;
+    color: var(--gh-fg-muted);
+    border: 1px dashed var(--gh-border-default);
+    border-radius: 6px;
+}
+
+.empty-state p {
+    font-size: 0.9375rem;
+    margin-bottom: 8px;
+}
+
+.empty-state code {
+    font-family:
+        ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+        "Liberation Mono", monospace;
+    font-size: 0.8125rem;
+    background-color: var(--gh-canvas-inset);
+    color: var(--gh-severe-fg);
+    border: 1px solid var(--gh-border-muted);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Footer (shared)
+   --------------------------------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 32px 0;
+    color: var(--gh-fg-subtle);
+    font-size: 0.8125rem;
+    border-top: 1px solid var(--gh-border-muted);
+    margin-top: 48px;
+}
+
+footer a {
+    color: var(--gh-accent-fg);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------------
+   CV document wrapper
+   --------------------------------------------------------------------------- */
+.cv-document {
+    background-color: var(--gh-canvas-subtle);
+    border: 1px solid var(--gh-border-default);
+    border-radius: 6px;
+    padding: 40px;
+    margin-bottom: 32px;
+}
+
+/* ---------------------------------------------------------------------------
+   CV header (name + contact)
+   --------------------------------------------------------------------------- */
+.cv-header {
+    text-align: center;
+    padding-bottom: 24px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--gh-border-default);
+}
+
+.cv-document .cv-header {
+    padding: 0 0 24px;
+    margin-bottom: 28px;
+}
+
+.cv-name {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: var(--gh-fg-default);
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+}
+
+.cv-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    color: var(--gh-fg-muted);
+}
+
+.cv-contact a {
+    color: var(--gh-accent-fg);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.cv-contact a:hover {
+    text-decoration: underline;
+}
+
+.cv-sep {
+    color: var(--gh-fg-subtle);
+    user-select: none;
+}
+
+/* ---------------------------------------------------------------------------
+   CV sections
+   --------------------------------------------------------------------------- */
+.cv-section {
+    margin-bottom: 28px;
+}
+
+.cv-section:last-child {
+    margin-bottom: 0;
+}
+
+.cv-section-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gh-fg-muted);
+    border-bottom: 1px solid var(--gh-border-default);
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+}
+
+/* ---------------------------------------------------------------------------
+   CV summary
+   --------------------------------------------------------------------------- */
+.cv-summary {
+    font-size: 0.9375rem;
+    color: var(--gh-fg-muted);
+    line-height: 1.75;
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   CV experience / education entries
+   --------------------------------------------------------------------------- */
+.cv-entry {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gh-border-muted);
+}
+
+.cv-entry:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.cv-entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    margin-bottom: 6px;
+}
+
+.cv-entry-left {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+}
+
+.cv-entry-right {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    white-space: nowrap;
+    color: var(--gh-fg-muted);
+    font-size: 0.8125rem;
+}
+
+.cv-entry-sep {
+    color: var(--gh-fg-subtle);
+    user-select: none;
+}
+
+.cv-company {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--gh-fg-default);
+}
+
+.cv-position {
+    font-size: 0.875rem;
+    color: var(--gh-accent-fg);
+}
+
+.cv-location {
+    color: var(--gh-fg-muted);
+}
+
+.cv-dates {
+    font-family:
+        ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+        "Liberation Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--gh-success-fg);
+}
+
+.cv-area {
+    font-size: 0.875rem;
+    color: var(--gh-fg-muted);
+    font-style: italic;
+    margin-bottom: 6px;
+}
+
+.cv-highlights {
+    margin: 8px 0 0 18px;
+    color: var(--gh-fg-muted);
+    line-height: 1.65;
+}
+
+.cv-highlights li {
+    font-size: 0.875rem;
+    margin-bottom: 5px;
+    padding-left: 4px;
+}
+
+.cv-highlights li::marker {
+    color: var(--gh-fg-subtle);
+}
+
+/* ---------------------------------------------------------------------------
+   CV skills
+   --------------------------------------------------------------------------- */
+.cv-skills {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 20px;
+    align-items: baseline;
+}
+
+.cv-skill-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--gh-severe-fg);
+    white-space: nowrap;
+}
+
+.cv-skill-value {
+    font-size: 0.875rem;
+    color: var(--gh-fg-muted);
+    line-height: 1.6;
+}
+
+.cv-skill-value a {
+    color: var(--gh-accent-fg);
+    text-decoration: none;
+}
+
+.cv-skill-value a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------------
+   Responsive — mobile
+   --------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    body {
+        padding: 16px 12px;
+    }
+
+    header {
+        padding: 32px 0 24px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .post-card {
+        padding: 16px;
+    }
+
+    .post-card h2 {
+        font-size: 1rem;
+    }
+
+    .blog-post {
+        padding: 20px 16px;
+    }
+
+    .blog-post h2 {
+        font-size: 1.125rem;
+    }
+
+    .cv-document {
+        padding: 24px 16px;
+    }
+
+    .cv-name {
+        font-size: 1.5rem;
+    }
+
+    .cv-entry-header {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .cv-entry-right {
+        white-space: normal;
+    }
+
+    .cv-skills {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .cv-skill-label::after {
+        content: ":";
+    }
+
+    .cv-skill-value {
+        padding-left: 12px;
+        margin-bottom: 8px;
+    }
+}

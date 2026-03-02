@@ -1,0 +1,120 @@
+#+TITLE: Weekly Journal Website
+#+AUTHOR: Arik
+#+DATE: 2026-02-28
+
+* About
+
+This is a static website that transforms my personal journal entries into readable blog posts. The site uses the beautiful [[https://github.com/catppuccin/catppuccin][Catppuccin Mocha]] color scheme for a comfortable reading experience.
+
+* Structure
+
+- =index.html= - Main landing page listing all blog posts
+- =posts/= - Directory containing individual blog post files
+  - =YYYY-MM-DD.html= - Individual blog posts named by date
+  - =_template.html= - Template for creating new blog posts
+- =README.org= - This file
+- =AGENTS.md= - AI agent instructions for maintaining the site
+- =QUICKSTART.md= - Quick start guide for adding new posts
+- =OVERVIEW.md= - Complete project overview and documentation
+- =STRUCTURE.md= - Visual structure guide with diagrams
+- =INDEX.md= - Documentation index and navigation guide
+- =new-post.sh= - Helper script to create new blog posts
+
+* Theme
+
+The website uses the Catppuccin Mocha color palette:
+
+- Base colors: Dark backgrounds (=#1e1e2e=, =#181825=)
+- Accent colors: Mauve (=#cba6f7=), Blue (=#89b4fa=), Teal (=#94e2d5=)
+- Text colors: High contrast for readability (=#cdd6f4=)
+
+* Deployment
+
+This site is designed to be hosted on GitHub Pages. Simply push to the =docs= directory and enable GitHub Pages in your repository settings.
+
+* Maintenance
+
+Blog posts are manually curated from journal entries in =../journals/=. Each week's significant events, projects, and reflections are synthesized into a cohesive narrative.
+
+** Adding a New Blog Post
+
+*** Quick Method (Using Helper Script)
+
+#+BEGIN_SRC bash
+./new-post.sh 2026-03-07
+#+END_SRC
+
+The script will:
+- Copy the template to a new dated file
+- Calculate the date range for you
+- Open the file in your editor
+- Show you the next steps
+
+*** Manual Method
+
+1. Copy =posts/_template.html= to =posts/YYYY-MM-DD.html= (use the end date of the week)
+2. Fill in the content following the template structure
+3. Add a new post card to =index.html= linking to your new post
+4. Keep posts in reverse chronological order (newest first)
+
+The template includes:
+- Pre-configured Catppuccin Mocha styling
+- Semantic HTML structure
+- Navigation back to index
+- Highlight boxes and dream boxes
+- Responsive design
+
+*** Quick Reference
+
+For detailed instructions, see:
+- =QUICKSTART.md= - Step-by-step guide with examples
+- =STRUCTURE.md= - Visual diagrams of the structure
+- =OVERVIEW.md= - Complete project documentation
+
+* Features
+
+- ✓ Modular blog post structure
+- ✓ Easy to add new posts (template + script)
+- ✓ Responsive design for mobile and desktop
+- ✓ Semantic HTML structure
+- ✓ Clean typography optimized for reading
+- ✓ Color-coded sections for different types of content:
+  - Dream entries (purple/mauve accent)
+  - Highlights and insights (yellow accent)
+  - Code references (peach inline styling)
+- ✓ No dependencies or build process required
+- ✓ GitHub Pages ready
+
+* Documentation
+
+This project includes comprehensive documentation:
+
+- =README.org= - This file (overview and quick reference)
+- =QUICKSTART.md= - Quick start guide for creating posts
+- =OVERVIEW.md= - Complete project overview and guidelines
+- =STRUCTURE.md= - Visual structure guide with diagrams
+- =AGENTS.md= - Detailed instructions for AI agents
+- =INDEX.md= - Documentation index for easy navigation
+
+** For First Time Users
+
+Start with =QUICKSTART.md= for a step-by-step guide to creating your first post.
+
+** For Developers
+
+See =STRUCTURE.md= for visual diagrams and =OVERVIEW.md= for technical details.
+
+** For AI Agents
+
+Read =AGENTS.md= for comprehensive content processing and automation guidelines.
+
+* Future Improvements
+
+- [X] Add multiple blog post pages (archive) - DONE: posts/ directory
+- [X] Helper script for creating posts - DONE: new-post.sh
+- [ ] Include navigation between weeks (prev/next links)
+- [ ] Add RSS feed generation
+- [ ] Automated build process from journal entries
+- [ ] Tag system for topics/themes
+- [ ] Search functionality across posts
+- [ ] Auto-generate index.html post list from posts/ directory

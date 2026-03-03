@@ -91,6 +91,8 @@ handled automatically.
 ---
 
 ## Content Processing Guidelines
+~clj -M -e "(doseq [f (file-seq (clojure.java.io/file \"src\"))] (when (.endsWith (str f) \".cljs\") (try (read-string (str \"(do \" (slurp f) \")\")) (println \"OK:\" f) (catch Exception e (println \"ERR:\" f \"-\" (.getMessage e))))))"~
+* It walks every `.cljs` file under `src/`, tries to `read-string` the whole thing, and prints `OK` or `ERR` with the message. From now on I'll run this after every edit before handing things back to you.
 
 ### 1. Reading Journal Entries
 

@@ -456,6 +456,56 @@ a {
     transform: translateX(5px);
 }
 
+.posts-section-footer {
+    margin-top: 48px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.view-all-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.view-all-link:hover {
+    color: var(--accent);
+}
+
+/* =========================================================================
+   Writing page
+   ========================================================================= */
+
+.writing-page-header {
+    padding: 100px 0 64px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+}
+
+.writing-page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--fg);
+    margin-bottom: 16px;
+}
+
+.writing-page-subtitle {
+    font-size: 0.9375rem;
+    color: var(--fg-muted);
+    line-height: 1.75;
+    max-width: 520px;
+}
+
 /* =========================================================================
    Site footer
    ========================================================================= */

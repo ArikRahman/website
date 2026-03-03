@@ -245,6 +245,87 @@ a {
 }
 
 /* =========================================================================
+   Tech stack section
+   ========================================================================= */
+
+.stack-section {
+    padding: 0 48px 120px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.stack-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.stack-card:hover {
+    border-color: var(--accent);
+    background: var(--bg-2);
+}
+
+.stack-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.stack-card-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--fg);
+    letter-spacing: 0.01em;
+}
+
+.stack-card-category {
+    font-size: 0.6563rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.stack-card-desc {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--fg-muted);
+    flex: 1;
+}
+
+.stack-card-arrow {
+    font-size: 0.875rem;
+    color: var(--fg-subtle);
+    align-self: flex-end;
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+    display: inline-block;
+}
+
+.stack-card:hover .stack-card-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+}
+
+/* =========================================================================
    Posts section
    ========================================================================= */
 
@@ -840,6 +921,14 @@ a {
         padding: 96px 24px 64px;
     }
 
+    .stack-section {
+        padding: 0 24px 80px;
+    }
+
+    .stack-grid {
+        grid-template-columns: 1fr;
+    }
+
     .posts-section {
         padding: 80px 24px 80px;
     }
@@ -939,7 +1028,6 @@ a {
     border: 2px solid var(--border-mid);
 }
 
-
 @media (max-width: 768px) {
     .hero-content {
         flex-direction: column !important;
@@ -947,4 +1035,3 @@ a {
         gap: 24px !important;
     }
 }
-

@@ -134,6 +134,7 @@ a {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 120px 48px 80px;
 }
 
@@ -1031,7 +1032,21 @@ a {
 @media (max-width: 768px) {
     .hero-content {
         flex-direction: column !important;
-        align-items: flex-start !important;
+        align-items: center !important;
+        text-align: center !important;
         gap: 24px !important;
+    }
+
+    .hero-bio {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .hero-subtitle {
+        justify-content: center;
     }
 }

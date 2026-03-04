@@ -658,6 +658,7 @@ a {
 .blog-post ul,
 .blog-post ol {
     margin: 10px 0 22px 22px;
+    max-width: 658px;
 }
 
 .blog-post li {
@@ -731,13 +732,9 @@ a {
 }
 
 .dream-box::before {
-    content: "Dream";
+    content: "💭";
     display: block;
-    font-size: 0.625rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--fg-subtle);
+    font-size: 1rem;
     margin-bottom: 10px;
 }
 
@@ -983,6 +980,26 @@ a {
         padding: 96px 24px 64px;
     }
 
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .hero-bio {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+
+    .hero-subtitle {
+        justify-content: center;
+    }
+
     .stack-section {
         padding: 0 24px 80px;
     }
@@ -1086,28 +1103,6 @@ a {
     flex-shrink: 0;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 24px;
+    margin-bottom: 0;
     border: 2px solid var(--border-mid);
-}
-
-@media (max-width: 768px) {
-    .hero-content {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 24px !important;
-    }
-
-    .hero-bio {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-cta {
-        justify-content: center;
-    }
-
-    .hero-subtitle {
-        justify-content: center;
-    }
 }
